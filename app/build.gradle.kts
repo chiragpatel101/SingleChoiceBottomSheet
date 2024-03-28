@@ -1,6 +1,19 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
+}
+afterEvaluate {
+    publishing {
+
+        publications {
+            create<MavenPublication>("maven") {
+                groupId = "com.singlechoicebottomsheet"
+                artifactId = "singlechoicebottomsheet"
+                version = "1.0.4"
+            }
+        }
+    }
 }
 
 android {
