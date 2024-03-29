@@ -19,7 +19,9 @@ class SingleChoiceBottomSheetFragment<T>(private val dialogTitle : String = "",
                                          private val itemList: List<T>,
                                          private val displayFieldName : String,
                                          private val preSelectedItem : T? = null,
-                                         private val onItemSelected : (T) -> Unit) : BottomSheetDialogFragment(), View.OnClickListener {
+                                         private val allowSearchIntoList : Boolean = true,
+                                                 private val onItemSelected : (T) -> Unit,
+                                         ) : BottomSheetDialogFragment(), View.OnClickListener {
 
     private lateinit var adapter: SingleChoiceBottomSheetAdapter<T>
     private lateinit var binding : FragmentSingleChoiceBottomSheetBinding
@@ -60,6 +62,12 @@ class SingleChoiceBottomSheetFragment<T>(private val dialogTitle : String = "",
         }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
+        if (allowSearchIntoList){
+            binding.cardSearchView.visibility = View.VISIBLE
+        }else{
+            binding.cardSearchView.visibility = View.GONE
+        }
 
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {

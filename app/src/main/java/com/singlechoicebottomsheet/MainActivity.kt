@@ -27,9 +27,12 @@ class MainActivity : AppCompatActivity() {
             list.add(user)
         }
 
-        val bottomSheet = SingleChoiceBottomSheetFragment<UserEntity>("User List",list,"name",selectedUser){
-            Toast.makeText(this@MainActivity,it.name,Toast.LENGTH_SHORT).show()
-            selectedUser = it
+        val bottomSheet = SingleChoiceBottomSheetFragment<UserEntity>(dialogTitle = "User List"
+            , itemList = list,
+            displayFieldName = "email",
+            preSelectedItem = selectedUser,allowSearchIntoList = true) { selectedItem ->
+            Toast.makeText(this@MainActivity,selectedItem.name,Toast.LENGTH_SHORT).show()
+            selectedUser = selectedItem
         }
 
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
