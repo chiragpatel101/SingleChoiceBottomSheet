@@ -15,15 +15,14 @@ Step 2 :
 1) Add below dependancy into your app level gradle file 
 
 		dependencies {
-					        implementation 'com.github.chiragpatel101:SingleChoiceBottomSheet:Tag'
+                implementation 'com.github.chiragpatel101:SingleChoiceBottomSheet:Tag'
 			}
 
-3) Note : here 'Tag' will be the latest version of the dependancy, suppose right now latest version is 1.0.7 in that case dependency will be like below
+   3) Note : here 'Tag' will be the latest version of the dependancy, suppose right now latest version is 1.0.7 in that case dependency will be like below
 
-		dependencies {
-					        implementation 'com.github.chiragpatel101:SingleChoiceBottomSheet:1.0.7'
-
-			}
+           dependencies {
+                    implementation 'com.github.chiragpatel101:SingleChoiceBottomSheet:1.0.7'
+               }
 
 4) Suppose you want display list of users into bottom sheet and data class of user will be like this
 		
@@ -32,12 +31,14 @@ Step 2 :
 5) To open bottom sheet for the list of users
 
        private fun openBottomSheet() {
+          // prepare a list of user
            val list = arrayListOf<UserEntity>()
              for (i in 0..50) {
                  val user = UserEntity((i+1),"Item ${i+1}","itemNo${i + 1}@gmail.com")
                  list.add(user)
              }
-
+         
+         // open bottom list for list of email      
          val bottomSheet = SingleChoiceBottomSheetFragment<UserEntity>(dialogTitle = "User List"
             , itemList = list,
             displayFieldName = "email",
