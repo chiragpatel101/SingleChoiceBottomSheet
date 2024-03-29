@@ -15,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.singlechoicebottomsheet.databinding.FragmentSingleChoiceBottomSheetBinding
 
 
-public class SingleChoiceBottomSheetFragment<T>(private val dialogTitle : String = "",
+class SingleChoiceBottomSheetFragment<T>(private val dialogTitle : String = "",
                                          private val itemList: List<T>,
                                          private val displayFieldName : String,
                                          private val preSelectedItem : T? = null,

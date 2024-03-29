@@ -1,14 +1,8 @@
 package com.singlechoicebottomsheet
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import com.singlechoicebottomsheet.databinding.ActivityMainBinding
 
@@ -39,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity,it.name,Toast.LENGTH_SHORT).show()
             selectedUser = it
         }
+
         bottomSheet.show(supportFragmentManager, bottomSheet.tag)
 
     }
