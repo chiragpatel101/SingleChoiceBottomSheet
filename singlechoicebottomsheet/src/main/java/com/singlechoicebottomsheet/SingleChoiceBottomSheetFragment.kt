@@ -1,5 +1,6 @@
 package com.singlechoicebottomsheet
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -20,6 +23,7 @@ class SingleChoiceBottomSheetFragment<T>(private val dialogTitle : String = "",
                                          private val displayFieldName : String,
                                          private val preSelectedItem : T? = null,
                                          private val allowSearchIntoList : Boolean = true,
+                                         private val toolbarBackground : Drawable? = null ,
                                                  private val onItemSelected : (T) -> Unit,
                                          ) : BottomSheetDialogFragment(), View.OnClickListener {
 
@@ -106,7 +110,9 @@ class SingleChoiceBottomSheetFragment<T>(private val dialogTitle : String = "",
         if (dialogTitle.isNotBlank()){
             binding.tvTitle.text = dialogTitle
         }
-
+        if (toolbarBackground!=null) {
+            binding.toolbar.background = toolbarBackground
+        }
     }
 
     private fun getDisplayTextForFilter(it: T): String {

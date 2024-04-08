@@ -3,6 +3,7 @@ package com.singlechoicebottomsheet
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import com.singlechoicebottomsheet.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +31,9 @@ class MainActivity : AppCompatActivity() {
         val bottomSheet = SingleChoiceBottomSheetFragment<UserEntity>(dialogTitle = "User List"
             , itemList = list,
             displayFieldName = "email",
-            preSelectedItem = selectedUser,allowSearchIntoList = true) { selectedItem ->
+            preSelectedItem = selectedUser,allowSearchIntoList = true,
+            ResourcesCompat.getDrawable(resources,R.drawable.toolbar_background,null)!!
+        ) { selectedItem ->
             Toast.makeText(this@MainActivity,selectedItem.name,Toast.LENGTH_SHORT).show()
             selectedUser = selectedItem
         }

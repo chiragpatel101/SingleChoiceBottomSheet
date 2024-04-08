@@ -42,23 +42,25 @@ Step 2 :
          val bottomSheet = SingleChoiceBottomSheetFragment<UserEntity>(dialogTitle = "User List"
             , itemList = list,
             displayFieldName = "email",
-            preSelectedItem = selectedUser,allowSearchIntoList = true) { selectedItem ->
-            Toast.makeText(this@MainActivity,selectedItem.name,Toast.LENGTH_SHORT).show()
-            selectedUser = selectedItem
-        }
+            preSelectedItem = selectedUser,allowSearchIntoList = true,
+            ResourcesCompat.getDrawable(resources,R.drawable.toolbar_background,null)!!
+              ) { selectedItem ->
+               Toast.makeText(this@MainActivity,selectedItem.name,Toast.LENGTH_SHORT).show()
+               selectedUser = selectedItem
+           }
 
-        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+           bottomSheet.show(supportFragmentManager, bottomSheet.tag)
 
-   }
+      }
 
-   Key parameter explanation :
+      Key parameter explanation :
 
-       UserEntity -> Type of array list which you have to pass into bottom sheet
-       dialogTitle -> title which you want to display for bottom sheet
-       itemList -> list of item which you want to pass 
-       displayFieldName -> name of parameter which you want to display for bottomsheet list, here in demo list of email will be display as the above code
-       allowSearchIntoList -> if you don't want search functionality in the list then pass as a 'false', by default it's true and you will have search functionality
-       preSelectedItem -> pass pre selected value if you want to display user already selected value 
-
+          UserEntity -> Type of array list which you have to pass into bottom sheet
+          dialogTitle -> title which you want to display for bottom sheet
+          itemList -> list of item which you want to pass 
+          displayFieldName -> name of parameter which you want to display for bottomsheet list, here in demo list of email will be display as the above code
+          allowSearchIntoList -> if you don't want search functionality in the list then pass as a 'false', by default it's true and you will have search functionality
+          preSelectedItem -> pass pre selected value if you want to display user already selected value
+          toolbarBackground -> If you want to change your toolbar background then pass your color drawable here.
 
     
